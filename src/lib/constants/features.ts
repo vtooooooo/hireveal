@@ -83,6 +83,24 @@ export const demoListings: DemoListing[] = [
         severity: "healthy",
       },
     ],
+    description: {
+      overview:
+        "Northwind Data builds infrastructure for teams running large-scale analytics pipelines. We're hiring a senior backend engineer to help scale our ingestion layer as we move from hundreds to thousands of customer pipelines.",
+      responsibilities: [
+        "Design and own core services in our ingestion and query pipeline (Go, Postgres, Kafka).",
+        "Improve reliability and observability across distributed data services.",
+        "Partner with product to scope technical tradeoffs for new pipeline features.",
+        "Mentor mid-level engineers and participate in architecture reviews.",
+        "Rotate on-call for services you own, roughly one week in six.",
+      ],
+      requirements: [
+        "5+ years building backend systems in a production environment.",
+        "Experience with distributed systems and event-driven architectures.",
+        "Strong proficiency in Go, Java, or a comparable statically-typed language.",
+        "Comfortable owning a service end-to-end, from design through on-call.",
+        "Authorized to work in the US, or eligible for employer-sponsored visa transfer.",
+      ],
+    },
   },
   {
     id: "ghost",
@@ -113,6 +131,24 @@ export const demoListings: DemoListing[] = [
         severity: "risk",
       },
     ],
+    description: {
+      overview:
+        "Vantage Cloud Systems is looking for a Product Marketing Manager to lead go-to-market for our platform tier. You'll partner closely with product and sales to shape how we position new releases.",
+      responsibilities: [
+        "Own positioning and messaging for the platform product line.",
+        "Partner with product management on launch timing and narrative.",
+        "Build sales enablement content and competitive battlecards.",
+        "Run customer and win/loss interviews to sharpen messaging.",
+        "Report on launch performance against pipeline and adoption goals.",
+      ],
+      requirements: [
+        "4+ years in B2B SaaS product marketing.",
+        "Track record of leading multi-team product launches.",
+        "Strong written communication — this role writes a lot of external copy.",
+        "Comfortable presenting to executive stakeholders.",
+        "Sponsorship available for the right candidate.",
+      ],
+    },
   },
   {
     id: "scam",
@@ -143,5 +179,21 @@ export const demoListings: DemoListing[] = [
         severity: "risk",
       },
     ],
+    description: {
+      overview:
+        "Elite Career Partners is expanding our remote team! No experience necessary — we provide full training. Work from anywhere, set your own hours, and start earning right away.",
+      responsibilities: [
+        "Enter data into our proprietary system from home.",
+        "Communicate with your team lead through chat.",
+        "Complete a short daily task list at your own pace.",
+        "Attend a brief onboarding orientation before your first shift.",
+      ],
+      requirements: [
+        "Own laptop and reliable internet connection.",
+        "No prior experience or degree required.",
+        "Must complete paid onboarding training to receive account access.",
+        "Available to start within 48 hours of being accepted.",
+      ],
+    },
   },
 ];

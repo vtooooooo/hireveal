@@ -77,7 +77,7 @@ export function InteractiveDemo() {
         ))}
       </AnimatedSection>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
+      <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5 lg:items-start">
         {/* Simulated job listing card */}
         <div className="rounded-2xl border border-border bg-card p-6 shadow-sm lg:col-span-3">
           <div className="flex items-start justify-between gap-4">
@@ -135,6 +135,49 @@ export function InteractiveDemo() {
               <dd className="text-sm text-pretty text-foreground">{listing.sponsorshipClaim}</dd>
             </div>
           </dl>
+
+          <div className="mt-6 border-t border-border pt-6">
+            <p className="mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+              Full job description
+            </p>
+            <div className="max-h-64 overflow-y-auto rounded-xl border border-border bg-muted/30 p-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={listing.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: shouldReduceMotion ? 0.01 : 0.2 }}
+                >
+                  <p className="text-sm text-pretty text-muted-foreground">
+                    {listing.description.overview}
+                  </p>
+
+                  <h4 className="mt-4 text-xs font-semibold tracking-wide text-foreground uppercase">
+                    Responsibilities
+                  </h4>
+                  <ul className="mt-2 list-disc space-y-1.5 pl-4">
+                    {listing.description.responsibilities.map((item) => (
+                      <li key={item} className="text-sm text-pretty text-muted-foreground">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <h4 className="mt-4 text-xs font-semibold tracking-wide text-foreground uppercase">
+                    Requirements
+                  </h4>
+                  <ul className="mt-2 list-disc space-y-1.5 pl-4">
+                    {listing.description.requirements.map((item) => (
+                      <li key={item} className="text-sm text-pretty text-muted-foreground">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
 
         {/* Hireveal panel */}
@@ -174,7 +217,7 @@ export function InteractiveDemo() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-auto flex items-center gap-2 border-t border-border pt-4">
+          <div className="mt-2 flex items-center gap-2 border-t border-border pt-4">
             <VerdictIcon className={cn("size-4 shrink-0", verdict.className)} />
             <p className="text-xs font-medium text-foreground">{verdict.label}</p>
           </div>

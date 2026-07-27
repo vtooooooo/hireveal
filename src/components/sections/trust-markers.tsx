@@ -1,27 +1,27 @@
 import Link from "next/link";
-import { Lock, UserCheck, Zap, BookOpenCheck } from "lucide-react";
+import { ScanSearch, Zap, Activity, BookOpenCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
 const markers = [
   {
-    icon: Lock,
-    label: "Privacy-first",
-    detail: "No account or data collection required to use the core extension.",
-  },
-  {
-    icon: UserCheck,
-    label: "No account required",
-    detail: "Install and it works — nothing to sign up for.",
+    icon: ScanSearch,
+    label: "Evidence-backed insights",
+    detail: "Every verdict is backed by observable signals, not assumptions.",
   },
   {
     icon: Zap,
-    label: "Works in seconds",
-    detail: "Signals appear inline as soon as a listing loads.",
+    label: "Fast setup",
+    detail: "Create your account once and start analyzing job listings in seconds.",
+  },
+  {
+    icon: Activity,
+    label: "Real-time analysis",
+    detail: "Signals appear instantly as you browse supported job listings.",
   },
   {
     icon: BookOpenCheck,
-    label: "Open methodology",
-    detail: "Every score is explained, not just asserted.",
+    label: "Transparent methodology",
+    detail: "Every score is explained, so you always know why.",
     href: "/methodology",
   },
 ];

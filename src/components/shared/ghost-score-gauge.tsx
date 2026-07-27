@@ -32,6 +32,8 @@ export function GhostScoreGauge({
   const clamped = Math.max(0, Math.min(100, score));
   const offset = circumference * (1 - clamped / 100);
   const { stroke, text, label } = tone(clamped);
+  const numberFontSize = Math.max(12, Math.min(40, size * 0.32));
+  const labelFontSize = Math.max(8, Math.min(13, size * 0.13));
 
   return (
     <div className={cn("relative inline-flex items-center justify-center", className)} style={{ width: size, height: size }}>
@@ -58,9 +60,19 @@ export function GhostScoreGauge({
           transition={{ duration: shouldReduceMotion ? 0.01 : 1, ease: [0.21, 0.47, 0.32, 0.98] }}
         />
       </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="font-mono text-2xl font-semibold text-foreground">{clamped}</span>
-        <span className={cn("text-[11px] font-medium uppercase tracking-wide", text)}>{label}</span>
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+        <span
+          className="font-mono leading-none font-semibold text-foreground"
+          style={{ fontSize: numberFontSize }}
+        >
+          {clamped}
+        </span>
+        <span
+          className={cn("font-medium tracking-wide uppercase", text)}
+          style={{ fontSize: labelFontSize }}
+        >
+          {label}
+        </span>
       </div>
     </div>
   );

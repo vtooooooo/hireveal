@@ -28,12 +28,12 @@ export function Hero() {
           </span>
 
           <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.05]">
-            Hiring is broken. We&apos;re making it{" "}
-            <span className="text-success-600 dark:text-success-400">transparent</span>.
+            Before you apply, {" "}
+            <span className="text-success-600 dark:text-success-400">Hireveal it</span>.
           </h1>
 
           <p className="max-w-lg text-pretty text-lg text-muted-foreground">
-            Hireveal surfaces the evidence behind every job listing—so candidates can
+            Hireveal surfaces the evidence behind every job listing, so candidates can
             make informed decisions before investing their time.
           </p>
 
@@ -50,7 +50,6 @@ export function Hero() {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            No account required. Works instantly on LinkedIn and Indeed.
           </p>
         </motion.div>
       </div>

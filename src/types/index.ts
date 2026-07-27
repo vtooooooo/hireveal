@@ -8,6 +8,12 @@ export type Signal = {
   severity: SignalSeverity;
 };
 
+export type JobDescription = {
+  overview: string;
+  responsibilities: string[];
+  requirements: string[];
+};
+
 export type DemoListing = {
   id: string;
   company: string;
@@ -21,6 +27,7 @@ export type DemoListing = {
   pulseStatus: "active" | "stale" | "likely closed";
   sponsorshipVerdict: "consistent" | "unverifiable" | "contradicted";
   signals: Signal[];
+  description: JobDescription;
 };
 
 export type Feature = {
@@ -28,13 +35,6 @@ export type Feature = {
   description: string;
   icon: LucideIcon;
   status?: "live" | "beta" | "roadmap";
-};
-
-export type RoadmapItem = {
-  quarter: string;
-  title: string;
-  description: string;
-  status: "shipped" | "in-progress" | "planned";
 };
 
 export type FaqItem = {

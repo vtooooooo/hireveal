@@ -34,8 +34,8 @@ export function Problem() {
     <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="The problem"
-        title="Job searching runs on information you can't verify."
-        description="None of this is new. What's missing is a way to check it before you spend the time."
+        title="Every job asks for your time. Few deserve it."
+        description="Know more in seconds, not after reading the entire job description."
       />
 
       <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

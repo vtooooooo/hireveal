@@ -7,7 +7,6 @@ const routes = [
   "/features",
   "/methodology",
   "/extension",
-  "/roadmap",
   "/blog",
   "/pricing",
   "/faq",
