@@ -14,37 +14,24 @@ export type NavItem = {
 };
 
 export const primaryNav: NavItem[] = [
-  { label: "Product", href: "/features" },
   { label: "Extension", href: "/extension" },
-  { label: "Methodology", href: "/methodology" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
 ];
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: "Product",
-    items: [
-      { label: "Features", href: "/features" },
-      { label: "Chrome Extension", href: "/extension" },
-      { label: "Methodology", href: "/methodology" },
-      { label: "Pricing", href: "/pricing" },
-    ],
+    items: [{ label: "Chrome Extension", href: "/extension" }],
   },
   {
     title: "Company",
     items: [
       { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Resources",
-    items: [
-      { label: "FAQ", href: "/faq" },
-      { label: "Methodology", href: "/methodology" },
-    ],
+    items: [{ label: "FAQ", href: "/faq" }],
   },
   {
     title: "Legal",

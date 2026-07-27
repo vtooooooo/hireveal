@@ -23,7 +23,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <section className="bg-muted/40">
-      <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading eyebrow="How it works" title="Nothing to change about how you search." />
 
         <div className="relative mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
@@ -41,7 +41,7 @@ export function HowItWorks() {
               >
                 <div className="relative flex size-12 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm">
                   <Icon className="size-5" strokeWidth={1.75} />
-                  <span className="absolute -top-2 -right-2 flex size-5 items-center justify-center rounded-full bg-brand-900 font-mono text-[10px] font-medium text-white dark:bg-brand-25 dark:text-brand-900">
+                  <span className="absolute -top-2 -right-2 flex size-5 items-center justify-center rounded-full bg-brand-900 font-mono text-[10px] font-medium text-white">
                     {index + 1}
                   </span>
                 </div>

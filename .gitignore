@@ -36,8 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# local waitlist stub storage
-/.data
 
 # typescript
 *.tsbuildinfo

@@ -15,7 +15,6 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { LogoMark } from "@/components/shared/logo-mark";
 
 export function Navbar() {
@@ -39,7 +38,7 @@ export function Navbar() {
           : "border-b border-transparent bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
           <LogoMark />
           <span className="text-base font-semibold tracking-tight text-foreground">
@@ -68,14 +67,12 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <ThemeToggle />
           <Button asChild size="lg" className="h-9 px-4">
             <Link href="#extension-showcase">Add to Chrome</Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-1 md:hidden">
-          <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open menu">

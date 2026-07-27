@@ -4,7 +4,7 @@ import { features } from "@/lib/constants/features";
 
 export function FeatureOverview() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="What Hireveal checks"
         title="Six signals. One extension."

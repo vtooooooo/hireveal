@@ -3,7 +3,7 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-brand-900 dark:bg-brand-950">
+    <section className="relative overflow-hidden bg-brand-900">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -11,7 +11,7 @@ export function FinalCta() {
         <div className="absolute top-1/2 left-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-success-500/10 blur-3xl" />
       </div>
 
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-24 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-16 text-center sm:px-6 lg:px-8">
         <AnimatedSection className="flex flex-col items-center gap-6">
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Stop applying on faith.

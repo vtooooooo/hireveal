@@ -29,7 +29,7 @@ const callouts = [
 
 export function ExtensionShowcase() {
   return (
-    <section id="extension-showcase" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+    <section id="extension-showcase" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="The Chrome extension"
         title="Everything shows up where you're already looking."
@@ -63,7 +63,7 @@ export function ExtensionShowcase() {
                 delay={index * 0.08}
                 className="flex gap-4"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-success-50 text-success-700 dark:bg-success-950 dark:text-success-400">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-success-50 text-success-700">
                   <Icon className="size-5" strokeWidth={1.75} />
                 </div>
                 <div>

@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { ScanSearch, Zap, Activity, BookOpenCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
@@ -22,37 +24,48 @@ const markers = [
     icon: BookOpenCheck,
     label: "Transparent methodology",
     detail: "Every score is explained, so you always know why.",
-    href: "/methodology",
   },
 ];
 
 export function TrustMarkers() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="border-y border-border bg-muted/40">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-          {markers.map((marker, index) => {
-            const Icon = marker.icon;
-            const content = (
-              <div className="flex flex-col items-start gap-2">
-                <Icon className="size-5 text-success-600 dark:text-success-400" strokeWidth={1.75} />
-                <p className="text-sm font-medium text-foreground">{marker.label}</p>
-                <p className="text-xs text-pretty text-muted-foreground">{marker.detail}</p>
-              </div>
-            );
+      <div className="w-full px-4 py-24 sm:px-6 lg:px-12">
+        <div className="relative">
+          <motion.div
+            aria-hidden
+            className="absolute top-10 right-[12.5%] left-[12.5%] hidden h-[2px] bg-success-500/40 sm:block"
+            style={{ transformOrigin: "left" }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: shouldReduceMotion ? 0.01 : 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+          />
 
-            return (
-              <AnimatedSection key={marker.label} delay={index * 0.05}>
-                {marker.href ? (
-                  <Link href={marker.href} className="block transition-opacity hover:opacity-80">
-                    {content}
-                  </Link>
-                ) : (
-                  content
-                )}
-              </AnimatedSection>
-            );
-          })}
+          <div className="relative grid grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-4">
+            {markers.map((marker, index) => {
+              const Icon = marker.icon;
+              return (
+                <AnimatedSection
+                  key={marker.label}
+                  delay={index * 0.15}
+                  className="flex flex-col items-center gap-5 text-center"
+                >
+                  <span className="relative z-10 flex size-20 items-center justify-center rounded-full border-[3px] border-success-500 bg-background text-success-600 shadow-md">
+                    <Icon className="size-8" strokeWidth={1.5} />
+                  </span>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-lg font-semibold text-foreground">{marker.label}</p>
+                    <p className="mx-auto max-w-xs text-pretty text-sm text-muted-foreground">
+                      {marker.detail}
+                    </p>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

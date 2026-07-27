@@ -44,15 +44,15 @@ export function ExtensionPopupMockup({
         <div className="flex flex-col gap-2 rounded-xl bg-muted p-3">
           {listing.signals.slice(0, 2).map((signal) => (
             <div key={signal.label} className="flex items-start gap-2">
-              <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-success-600 dark:text-success-400" />
+              <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-success-600" />
               <p className="text-xs text-pretty text-muted-foreground">{signal.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex items-center gap-2 rounded-xl border border-success-200 bg-success-50 px-3 py-2 dark:border-success-900 dark:bg-success-950/40">
-          <ShieldCheck className="size-4 shrink-0 text-success-600 dark:text-success-400" />
-          <p className="text-xs font-medium text-success-800 dark:text-success-300">
+        <div className="flex items-center gap-2 rounded-xl border border-success-200 bg-success-50 px-3 py-2">
+          <ShieldCheck className="size-4 shrink-0 text-success-600" />
+          <p className="text-xs font-medium text-success-800">
             Sponsorship claim: consistent with history
           </p>
         </div>

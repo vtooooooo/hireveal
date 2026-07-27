@@ -4,11 +4,7 @@ import { siteConfig } from "@/lib/constants/site";
 const routes = [
   "",
   "/about",
-  "/features",
-  "/methodology",
   "/extension",
-  "/blog",
-  "/pricing",
   "/faq",
   "/contact",
   "/privacy",

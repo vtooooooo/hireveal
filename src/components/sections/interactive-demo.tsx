@@ -27,21 +27,21 @@ const tabs = [
 ] as const;
 
 const pulseCopy: Record<string, { label: string; className: string }> = {
-  active: { label: "Active listing", className: "bg-success-50 text-success-700 dark:bg-success-950/50 dark:text-success-400" },
-  stale: { label: "Going stale", className: "bg-warning-50 text-warning-700 dark:bg-warning-950/50 dark:text-warning-400" },
-  "likely closed": { label: "Likely closed", className: "bg-danger-50 text-danger-700 dark:bg-danger-950/50 dark:text-danger-400" },
+  active: { label: "Active listing", className: "bg-success-50 text-success-700" },
+  stale: { label: "Going stale", className: "bg-warning-50 text-warning-700" },
+  "likely closed": { label: "Likely closed", className: "bg-danger-50 text-danger-700" },
 };
 
 const verdictCopy: Record<string, { label: string; icon: typeof CheckCircle2; className: string }> = {
-  consistent: { label: "Consistent with sponsorship history", icon: CheckCircle2, className: "text-success-600 dark:text-success-400" },
-  unverifiable: { label: "No sponsorship history found", icon: AlertTriangle, className: "text-warning-600 dark:text-warning-400" },
-  contradicted: { label: "Contradicts sponsorship history", icon: XCircle, className: "text-danger-600 dark:text-danger-400" },
+  consistent: { label: "Consistent with sponsorship history", icon: CheckCircle2, className: "text-success-600" },
+  unverifiable: { label: "No sponsorship history found", icon: AlertTriangle, className: "text-warning-600" },
+  contradicted: { label: "Contradicts sponsorship history", icon: XCircle, className: "text-danger-600" },
 };
 
 const severityIcon: Record<Signal["severity"], { icon: typeof CheckCircle2; className: string }> = {
-  healthy: { icon: CheckCircle2, className: "text-success-600 dark:text-success-400" },
-  caution: { icon: AlertTriangle, className: "text-warning-600 dark:text-warning-400" },
-  risk: { icon: XCircle, className: "text-danger-600 dark:text-danger-400" },
+  healthy: { icon: CheckCircle2, className: "text-success-600" },
+  caution: { icon: AlertTriangle, className: "text-warning-600" },
+  risk: { icon: XCircle, className: "text-danger-600" },
 };
 
 export function InteractiveDemo() {
@@ -53,7 +53,7 @@ export function InteractiveDemo() {
   const VerdictIcon = verdict.icon;
 
   return (
-    <section id="interactive-demo" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+    <section id="interactive-demo" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="See it in action"
         title="Same job board. Completely different picture."
@@ -68,7 +68,7 @@ export function InteractiveDemo() {
             className={cn(
               "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
               activeId === tab.id
-                ? "border-brand-900 bg-brand-900 text-white dark:border-brand-25 dark:bg-brand-25 dark:text-brand-900"
+                ? "border-brand-900 bg-brand-900 text-white"
                 : "border-border bg-background text-muted-foreground hover:text-foreground"
             )}
           >

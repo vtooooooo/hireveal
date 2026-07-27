@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <ComingSoon
       title="Contact"
-      description="A proper contact form is on its way. Join the waitlist from the homepage and we'll be in touch."
+      description="A proper contact form is on its way. Check back soon."
     />
   );
 }

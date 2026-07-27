@@ -12,12 +12,12 @@ type GhostScoreGaugeProps = {
 
 function tone(score: number) {
   if (score >= 70) {
-    return { stroke: "var(--success-500)", text: "text-success-600 dark:text-success-400", label: "Healthy" };
+    return { stroke: "var(--success-500)", text: "text-success-600", label: "Healthy" };
   }
   if (score >= 40) {
-    return { stroke: "var(--warning-500)", text: "text-warning-600 dark:text-warning-400", label: "Caution" };
+    return { stroke: "var(--warning-500)", text: "text-warning-600", label: "Caution" };
   }
-  return { stroke: "var(--danger-500)", text: "text-danger-600 dark:text-danger-400", label: "High risk" };
+  return { stroke: "var(--danger-500)", text: "text-danger-600", label: "High risk" };
 }
 
 export function GhostScoreGauge({
