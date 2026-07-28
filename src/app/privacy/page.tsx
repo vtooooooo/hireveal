@@ -10,101 +10,171 @@ export const metadata: Metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" effectiveDate="July 27, 2026">
+    <LegalPage title="Privacy Policy" effectiveDate="July 28, 2026">
       <section>
         <h2>1. Introduction</h2>
         <p>
-          This Privacy Policy explains how Hireveal, Inc. (&quot;Hireveal,&quot;
-          &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) collects, uses, and shares
-          information when you use the Hireveal website (the &quot;Site&quot;) and the
-          Hireveal Chrome extension (the &quot;Extension,&quot; and together with the
-          Site, the &quot;Service&quot;). By using the Service, you agree to the
-          collection and use of information as described in this policy.
+          This Privacy Policy explains how Hireveal (&quot;Hireveal,&quot; &quot;we,&quot;
+          &quot;us,&quot; or &quot;our&quot;) handles information when you use the
+          Hireveal website (the &quot;Site&quot;) and the Hireveal Chrome extension (the
+          &quot;Extension,&quot; and together with the Site, the &quot;Service&quot;).
+          Hireveal is built to run almost entirely on your own device: your account,
+          your resume, and your saved preferences stay in your browser, and only a
+          small, specific set of lookups ever leaves it. This policy describes exactly
+          what those are.
         </p>
       </section>
 
       <section>
-        <h2>2. Information We Collect</h2>
-        <p>We collect the following categories of information:</p>
+        <h2>2. Information Stored on Your Device</h2>
+        <p>
+          The Extension stores the following directly in your browser, using Chrome&apos;s
+          local storage (<code>chrome.storage.local</code>). None of it is transmitted to
+          a Hireveal server, because Hireveal does not currently operate one.
+        </p>
         <ul>
           <li>
-            <strong>Account information.</strong> If you create a Hireveal account, we
-            collect your email address and any other details you choose to provide.
+            <strong>Account and session.</strong> If you create a local account or log
+            in, your email and a session record are stored on your device. This is not
+            server-backed authentication — it does not sync across browsers or devices,
+            and we do not have server-side access to it.
           </li>
           <li>
-            <strong>Listing data processed by the Extension.</strong> When the Extension
-            is active on a supported job board (such as LinkedIn or Indeed), it reads
-            the content of the job listing page you are currently viewing — for
-            example, the posting text, salary range, applicant count, and posting date —
-            in order to generate the signals shown to you (Listing Pulse, Ghosting
-            Index, Sponsorship Truth Layer, and Scam Detection). This processing happens
-            only on pages you actively visit while the Extension is enabled.
-          </li>
-          <li>
-            <strong>Site usage information.</strong> We collect limited technical
-            information when you visit the Site, such as pages viewed and general
-            device/browser information, to keep the Site working correctly and secure.
-          </li>
-          <li>
-            <strong>Communications.</strong> If you contact us, we retain the content
-            of your message and our correspondence with you.
+            <strong>Your confirmed profile.</strong> Work authorization status, years of
+            professional experience, minimum salary, current or recent title, skills,
+            preferred location, and preferred work mode (any, remote, hybrid, or
+            on-site) — but only after you review and confirm these fields. Nothing is
+            saved automatically.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>3. How We Use Information</h2>
-        <p>We use the information described above to:</p>
+        <h2>3. How Your Resume Is Processed</h2>
+        <p>
+          You can upload a resume as a PDF, DOCX, or TXT file (up to 8 MB) so Hireveal
+          can suggest profile fields for you. This parsing happens locally in your
+          browser — PDF parsing uses a bundled copy of PDF.js and its worker, so your
+          file is never uploaded anywhere to be read.
+        </p>
+        <p>
+          <strong>The original file and the raw text extracted from it are not saved.</strong>{" "}
+          Once Hireveal proposes structured fields (experience, title, skills, and so
+          on) and you&apos;ve reviewed and confirmed them, only that confirmed,
+          structured profile is kept. You can edit it, replace it by uploading a new
+          resume, or delete it at any time.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Job Listing Data</h2>
+        <p>
+          When the Extension is active on a job listing page, it reads the content of
+          the active job detail pane you have open — title, company, location, posting
+          age, salary, experience requirements, applicant activity, and sponsorship
+          language — to compute your personalized opportunity score. This happens live,
+          on the page you are viewing, and is not sent to or stored by Hireveal.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. External Lookups the Extension Makes</h2>
+        <p>
+          To supplement what a listing itself says, the Extension makes a small number
+          of outbound requests to independent, publicly available sources. These
+          requests contain only the minimum information needed for the specific
+          lookup — never your profile, resume, or account information.
+        </p>
         <ul>
-          <li>Operate, maintain, and improve the Service and the signals it produces.</li>
-          <li>Provide, and respond to requests related to, your account.</li>
-          <li>Detect, investigate, and prevent fraudulent or scam listings.</li>
-          <li>Communicate with you about the Service, including support requests.</li>
-          <li>Comply with legal obligations and enforce our Terms of Service.</li>
+          <li>
+            <strong>Greenhouse and Lever.</strong> If a listing links to a Greenhouse or
+            Lever application page, we query that board&apos;s public API for the
+            listing&apos;s official publish date, to check it against what the job
+            board displays.
+          </li>
+          <li>
+            <strong>Internet Archive (Wayback Machine).</strong> When no ATS date is
+            available, we query the Wayback Machine&apos;s public CDX API for the
+            earliest archived snapshot of the listing URL. Results are cached in the
+            Extension&apos;s background service worker for your browsing session. This
+            is labeled as an earliest archived snapshot — never as an original posting
+            date, since an archive can only prove a page existed by a given date, not
+            when it was first created.
+          </li>
+          <li>
+            <strong>MyVisaJobs.</strong> Only when a listing says nothing at all about
+            sponsorship, citizenship, or work authorization, we look up the hiring
+            company&apos;s name against MyVisaJobs&apos; public H-1B filing records.
+            This is shown as background context about the company only — it is never
+            presented as proof that the specific role you&apos;re viewing sponsors visas.
+          </li>
         </ul>
       </section>
 
       <section>
-        <h2>4. How We Share Information</h2>
+        <h2>6. Site Usage Information</h2>
         <p>
-          We do not sell your personal information. We share information only with:
+          Separately from the Extension, when you visit the Site we collect limited
+          technical information — such as pages viewed and general device or browser
+          information — to keep the Site working correctly and securely.
         </p>
+      </section>
+
+      <section>
+        <h2>7. Communications</h2>
+        <p>
+          If you contact us through the Site&apos;s contact form or by email, we retain
+          the content of your message and our correspondence with you so we can
+          respond and keep a record of the conversation.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Why the Extension Requests the Permissions It Does</h2>
+        <p>
+          The Extension requests the <code>storage</code> permission to save your local
+          account, session, and profile as described above. It requests host
+          permissions for the Greenhouse boards API, the Lever API, the Internet
+          Archive, and MyVisaJobs, solely to make the specific lookups described in
+          Section 5. Its content script runs broadly across sites so it can detect a
+          job listing page wherever you encounter one; in practice, testing and support
+          today center on LinkedIn.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. How We Share Information</h2>
+        <p>We do not sell your personal information. We share information only:</p>
         <ul>
           <li>
-            Service providers who help us operate the Service (for example, hosting and
-            email delivery), under obligations to protect your information.
+            With the external sources described in Section 5, limited to the specific
+            listing URL, ATS URL, or company name each lookup requires.
           </li>
           <li>
-            Authorities, when required by law, legal process, or to protect the rights,
-            safety, or property of Hireveal, our users, or the public.
+            With service providers who help us operate the Site (for example, hosting
+            and email delivery), under obligations to protect your information.
           </li>
-          <li>A successor entity, in the event of a merger, acquisition, or asset sale.</li>
+          <li>
+            With authorities, when required by law, legal process, or to protect the
+            rights, safety, or property of Hireveal, our users, or the public.
+          </li>
+          <li>With a successor entity, in the event of a merger, acquisition, or asset sale.</li>
         </ul>
       </section>
 
       <section>
-        <h2>5. Data Retention</h2>
+        <h2>10. Data Retention and Your Controls</h2>
         <p>
-          We retain account information for as long as your account is active, and
-          listing data processed by the Extension only as long as needed to generate
-          and display the relevant signals. We delete or anonymize information when it
-          is no longer needed for these purposes, unless a longer retention period is
-          required by law.
+          Your account, profile, and any local session data remain on your device until
+          you delete them, clear your browser&apos;s extension storage, or uninstall the
+          Extension — any of which removes them completely, since we do not hold a
+          separate copy. Site communications are retained as long as needed to handle
+          your request, unless a longer period is required by law.
         </p>
       </section>
 
       <section>
-        <h2>6. Your Rights</h2>
-        <p>
-          Depending on where you live, you may have the right to access, correct,
-          delete, or export your personal information, or to object to or restrict
-          certain processing. To exercise any of these rights, contact us at{" "}
-          <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
-        </p>
-      </section>
-
-      <section>
-        <h2>7. Children&apos;s Privacy</h2>
+        <h2>11. Children&apos;s Privacy</h2>
         <p>
           The Service is not directed to children under 16, and we do not knowingly
           collect personal information from them. If you believe a child has provided us
@@ -113,25 +183,26 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>8. Security</h2>
+        <h2>12. Security</h2>
         <p>
           We use reasonable administrative, technical, and physical safeguards to
-          protect the information we hold. No method of transmission or storage is
-          completely secure, and we cannot guarantee absolute security.
+          protect the information described in this policy. No method of transmission
+          or storage is completely secure, and we cannot guarantee absolute security.
         </p>
       </section>
 
       <section>
-        <h2>9. International Users</h2>
+        <h2>13. International Users</h2>
         <p>
-          We are based in the United States. If you access the Service from outside the
-          United States, your information may be transferred to, stored, and processed
-          in the United States or other countries.
+          If you access the Service from outside the United States, be aware that any
+          information you provide to us directly (for example, through the contact
+          form) may be transferred to, stored, and processed in the United States or
+          other countries.
         </p>
       </section>
 
       <section>
-        <h2>10. Changes to This Policy</h2>
+        <h2>14. Changes to This Policy</h2>
         <p>
           We may update this Privacy Policy from time to time. If we make material
           changes, we will update the effective date above and, where appropriate,
@@ -140,7 +211,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>11. Contact Us</h2>
+        <h2>15. Contact Us</h2>
         <p>
           Questions about this Privacy Policy can be sent to{" "}
           <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.

@@ -5,7 +5,7 @@ export const siteConfig = {
     "Hireveal is a Chrome extension that tells you whether a job listing is active, whether sponsorship claims are truthful, and whether a recruiter is legitimate — before you spend an hour on an application.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hireveal.com",
   extensionUrl: "#", // TODO: replace with Chrome Web Store listing once published
-  supportEmail: "hireveal26@gmail.com",
+  supportEmail: "support@hireveal.online",
 } as const;
 
 export type NavItem = {
