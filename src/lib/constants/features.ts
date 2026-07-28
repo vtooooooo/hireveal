@@ -1,25 +1,25 @@
-import { Activity, Ghost, ShieldCheck } from "lucide-react";
+import { Gauge, CalendarClock, ShieldCheck } from "lucide-react";
 import type { DemoListing, Feature } from "@/types";
 
 export const features: Feature[] = [
   {
-    title: "Listing Pulse",
+    title: "Opportunity Score",
     description:
-      "Know in one glance whether a posting is actively being reviewed, gone stale, or effectively dead — before you write a cover letter for it.",
-    icon: Activity,
+      "A personalized 0–100 score — 65% how well the role fits your experience, salary floor, and sponsorship needs, 35% how healthy the listing itself looks.",
+    icon: Gauge,
     status: "live",
   },
   {
-    title: "Ghosting Index",
+    title: "Honest posting age",
     description:
-      "A score built from repost frequency, response patterns, and time-to-close, so you can tell a slow hiring process from one that never intended to close.",
-    icon: Ghost,
+      "Checks Greenhouse, Lever, and Internet Archive for real evidence of when a listing first appeared, and says so plainly when no evidence exists.",
+    icon: CalendarClock,
     status: "live",
   },
   {
-    title: "Sponsorship Truth Layer",
+    title: "Sponsorship, read correctly",
     description:
-      "Cross-checks a listing's visa sponsorship claim against the hiring company's actual sponsorship history, so you stop applying on a promise that isn't backed up.",
+      "Reads the job description first. Only when a role says nothing does Hireveal show the company's H-1B history — as context, never as proof.",
     icon: ShieldCheck,
     status: "live",
   },

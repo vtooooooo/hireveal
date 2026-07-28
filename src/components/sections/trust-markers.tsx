@@ -1,29 +1,32 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ScanSearch, Zap, Activity, BookOpenCheck } from "lucide-react";
+import { UserCheck, ScanSearch, Lock, BookOpenCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
 const markers = [
   {
+    icon: UserCheck,
+    label: "Personalized to you",
+    detail:
+      "Scored against your own experience, salary floor, and work authorization — not a generic checklist.",
+  },
+  {
     icon: ScanSearch,
-    label: "Evidence-backed insights",
-    detail: "Every verdict is backed by observable signals, not assumptions.",
+    label: "Evidence, not guesses",
+    detail:
+      "Posting age comes from ATS records or archive snapshots — labeled honestly, never presented as certainty.",
   },
   {
-    icon: Zap,
-    label: "Fast setup",
-    detail: "Create your account once and start analyzing job listings in seconds.",
-  },
-  {
-    icon: Activity,
-    label: "Real-time analysis",
-    detail: "Signals appear instantly as you browse supported job listings.",
+    icon: Lock,
+    label: "Your CV stays local",
+    detail:
+      "Resumes are parsed in your browser. The file and raw text are discarded once your profile is confirmed.",
   },
   {
     icon: BookOpenCheck,
-    label: "Transparent methodology",
-    detail: "Every score is explained, so you always know why.",
+    label: "Every score explained",
+    detail: "Click “Why this score?” for the exact reasons — no hidden scam-pattern deductions.",
   },
 ];
 

@@ -8,24 +8,24 @@ import { ScrollCue } from "@/components/shared/scroll-cue";
 
 const problems = [
   {
-    title: "Ghost listings",
+    title: "Sponsorship buried in fine print",
     description:
-      "Postings stay live long after hiring has stopped—collecting applications that may never be reviewed.",
+      "Whether a role sponsors is often unstated or buried mid-paragraph — with no quick way to check a company's history without leaving the page.",
   },
   {
-    title: "Unverifiable sponsorship",
+    title: "Reposted listings look brand new",
     description:
-      "Candidates spend valuable time researching visa sponsorship with no reliable way to verify it upfront.",
+      "LinkedIn's \"Posted 2 days ago\" can hide a role that's actually been open, and reposted, for months.",
   },
   {
-    title: "Recruiter impersonation",
+    title: "Fit gets checked after you apply",
     description:
-      "Fake recruiters and cloned profiles exploit job seekers when they're most eager to respond.",
+      "Experience gaps, salary floors, and work-mode mismatches are usually discovered only after the cover letter's already written.",
   },
   {
-    title: "Pay-to-play scams",
+    title: "Every listing reads the same",
     description:
-      "Some services charge candidates upfront for access to opportunities that were never guaranteed.",
+      "Scrolling through generic postings gives no sense of which ones are actually worth your specific time.",
   },
 ];
 

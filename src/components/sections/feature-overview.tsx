@@ -24,11 +24,11 @@ export function FeatureOverview() {
             What Hireveal checks
           </span>
           <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Three signals. One extension.
+            One score, built around you.
           </h2>
           <p className="max-w-2xl text-pretty text-base text-white/60 sm:text-lg">
-            The core signals Hireveal checks on every listing you open — live today, on
-            every supported job board.
+            Hireveal reads the LinkedIn listing you have open, checks what evidence
+            actually exists, and combines it with your own profile.
           </p>
         </AnimatedSection>
 
