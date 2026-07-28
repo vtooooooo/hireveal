@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { ScrollCue } from "@/components/shared/scroll-cue";
 
 const problems = [
   {
@@ -91,6 +92,8 @@ export function Problem() {
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-40 bg-gradient-to-r from-[#F3ECDF] to-transparent lg:block" />
         </div>
       </div>
+
+      <ScrollCue targetId="feature-overview" />
     </section>
   );
 }

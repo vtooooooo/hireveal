@@ -6,7 +6,6 @@ import { ScrollCue } from "@/components/shared/scroll-cue";
 import { Problem } from "@/components/sections/problem";
 import { FeatureOverview } from "@/components/sections/feature-overview";
 import { HowItWorks } from "@/components/sections/how-it-works";
-import { ExtensionShowcase } from "@/components/sections/extension-showcase";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = buildMetadata({
@@ -22,11 +21,18 @@ export default function Home() {
         <TrustMarkers />
         <ScrollCue targetId="problem" />
       </section>
+
       <Problem />
+
       <FeatureOverview />
-      <HowItWorks />
-      <ExtensionShowcase />
-      <FinalCta />
+
+      <section
+        id="how-it-works"
+        className="relative flex min-h-[calc(100vh-4rem)] scroll-mt-16 flex-col overflow-hidden"
+      >
+        <HowItWorks />
+        <FinalCta />
+      </section>
     </>
   );
 }

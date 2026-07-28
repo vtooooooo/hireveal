@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/constants/site";
 
 const routes = [
   "",
-  "/about",
+  "/team",
   "/extension",
   "/faq",
   "/contact",

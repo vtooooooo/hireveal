@@ -3,7 +3,7 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-brand-900">
+    <section className="relative flex flex-1 flex-col justify-center overflow-hidden bg-brand-900">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"

@@ -1,11 +1,4 @@
-import {
-  Activity,
-  Ghost,
-  ShieldCheck,
-  ShieldAlert,
-  BadgeCheck,
-  Radar,
-} from "lucide-react";
+import { Activity, Ghost, ShieldCheck } from "lucide-react";
 import type { DemoListing, Feature } from "@/types";
 
 export const features: Feature[] = [
@@ -29,27 +22,6 @@ export const features: Feature[] = [
       "Cross-checks a listing's visa sponsorship claim against the hiring company's actual sponsorship history, so you stop applying on a promise that isn't backed up.",
     icon: ShieldCheck,
     status: "live",
-  },
-  {
-    title: "Scam Detection",
-    description:
-      "Flags listings and 'career service' offers that match known patterns for fee-based scams, fake staffing agencies, and pay-to-interview schemes.",
-    icon: ShieldAlert,
-    status: "live",
-  },
-  {
-    title: "Verified History Badge",
-    description:
-      "Lets candidates verify past employment directly, so recruiters and future employers can trust a work history without a phone-tag reference check.",
-    icon: BadgeCheck,
-    status: "roadmap",
-  },
-  {
-    title: "Behavioral Fraud Detection",
-    description:
-      "Watches for the behavioral fingerprints of recruiter impersonation and account takeover — not just what a profile says, but how it acts.",
-    icon: Radar,
-    status: "roadmap",
   },
 ];
 

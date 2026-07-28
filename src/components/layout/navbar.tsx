@@ -68,7 +68,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild size="lg" className="h-9 px-4">
-            <Link href="#extension-showcase">Add to Chrome</Link>
+            <Link href={siteConfig.extensionUrl}>Add to Chrome</Link>
           </Button>
         </div>
 
@@ -101,7 +101,7 @@ export function Navbar() {
               <div className="mt-auto flex flex-col gap-2 p-4">
                 <SheetClose asChild>
                   <Button asChild size="lg">
-                    <Link href="#extension-showcase">Add to Chrome</Link>
+                    <Link href={siteConfig.extensionUrl}>Add to Chrome</Link>
                   </Button>
                 </SheetClose>
               </div>
