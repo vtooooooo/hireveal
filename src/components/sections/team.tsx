@@ -55,6 +55,7 @@ export function Team() {
                   src={founder.photo}
                   alt={founder.name}
                   fill
+                  priority
                   sizes="(min-width: 1024px) 40vw, 90vw"
                   className="object-cover"
                 />
