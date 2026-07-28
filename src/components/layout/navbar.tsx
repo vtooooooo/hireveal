@@ -15,7 +15,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { LogoMark } from "@/components/shared/logo-mark";
+import { Logo } from "@/components/shared/logo";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -39,11 +39,8 @@ export function Navbar() {
       )}
     >
       <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
-          <LogoMark />
-          <span className="text-base font-semibold tracking-tight text-foreground">
-            {siteConfig.name}
-          </span>
+        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -81,9 +78,8 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:max-w-xs">
               <SheetHeader>
-                <SheetTitle className="flex items-center gap-2">
-                  <LogoMark />
-                  {siteConfig.name}
+                <SheetTitle className="flex items-center">
+                  <Logo />
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4" aria-label="Mobile">

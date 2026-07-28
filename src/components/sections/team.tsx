@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -10,7 +11,7 @@ const founders = [
   {
     name: "Meghana Lakshminarayana Swamy",
     role: "Founder",
-    photoLabel: "Founder Photo",
+    photo: "/team/meghana.jpeg",
     linkedin: "https://www.linkedin.com/in/meghana-swamy",
     description:
       "Owns the vision behind Hireveal and builds the product end-to-end — from the Chrome extension to the detection systems behind every signal.",
@@ -18,7 +19,7 @@ const founders = [
   {
     name: "Vittu Ramadasu Darshan",
     role: "Co-Founder",
-    photoLabel: "Co-Founder Photo",
+    photo: "/team/vittu.png",
     linkedin: "https://www.linkedin.com/in/vitturamadasudarshan",
     description:
       "Drives market research, product direction, and the UI/UX behind Hireveal — shaping an experience candidates can trust.",
@@ -45,13 +46,15 @@ export function Team() {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="relative min-h-[160px] flex-1 overflow-hidden rounded-[22px] bg-gradient-to-br from-brand-100 to-brand-50 shadow-md"
+              className="relative min-h-[160px] flex-1 overflow-hidden rounded-[22px] shadow-md"
             >
-              <div className="flex h-full w-full items-center justify-center">
-                <span className="text-sm font-medium text-muted-foreground">
-                  {founder.photoLabel}
-                </span>
-              </div>
+              <Image
+                src={founder.photo}
+                alt={founder.name}
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
             </motion.div>
 
             <div className="relative z-10 mx-4 -mt-8 flex flex-col gap-2.5 rounded-2xl border border-border bg-card p-5 shadow-lg">

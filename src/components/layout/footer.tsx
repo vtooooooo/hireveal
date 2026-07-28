@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { footerNav, siteConfig } from "@/lib/constants/site";
-import { LogoMark } from "@/components/shared/logo-mark";
+import { Logo } from "@/components/shared/logo";
 
 export function Footer() {
   return (
@@ -8,11 +8,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-2 flex flex-col gap-4 sm:col-span-3 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
-              <LogoMark />
-              <span className="text-base font-semibold tracking-tight text-foreground">
-                {siteConfig.name}
-              </span>
+            <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
+              <Logo />
             </Link>
             <p className="max-w-xs text-sm text-pretty text-muted-foreground">
               {siteConfig.tagline}.

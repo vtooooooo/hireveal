@@ -28,8 +28,7 @@ export function Hero() {
           </span>
 
           <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-7xl lg:leading-[1.05]">
-            Before you apply, {" "}
-            <span className="text-success-600">Hireveal it</span>.
+            Before you apply, Hi<span className="text-success-600">reveal</span> it.
           </h1>
 
           <p className="max-w-2xl text-pretty text-lg text-muted-foreground">

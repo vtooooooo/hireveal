@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { ScrollCue } from "@/components/shared/scroll-cue";
@@ -80,14 +81,17 @@ export function Problem() {
           </div>
         </div>
 
-        {/* Right — hero image (placeholder until real photography is supplied) */}
+        {/* Right — hero image */}
         <div ref={imageRef} className="relative min-h-[360px] overflow-hidden lg:min-h-full">
           <motion.div style={{ y }} className="absolute inset-0 -m-10">
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#E9DCC8] via-[#DFCEB4] to-[#CBB693]">
-              <p className="max-w-xs px-6 text-center text-sm text-[#111827]/40">
-                Hero photography goes here — a job seeker buried in browser tabs.
-              </p>
-            </div>
+            <Image
+              src="/problem/frustrated_user.png"
+              alt="A job seeker overwhelmed by browser tabs full of job listings"
+              fill
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </motion.div>
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-40 bg-gradient-to-r from-[#F3ECDF] to-transparent lg:block" />
         </div>
