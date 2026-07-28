@@ -35,7 +35,7 @@ export function Team() {
         className="mx-auto max-w-3xl shrink-0"
       />
 
-      <div className="mt-10 grid flex-1 grid-cols-1 gap-10 lg:mt-8 lg:min-h-0 lg:grid-cols-2 lg:gap-12">
+      <div className="mx-auto mt-10 grid w-full max-w-3xl flex-1 content-center grid-cols-1 gap-10 lg:mt-6 lg:min-h-0 lg:grid-cols-2 lg:gap-10">
         {founders.map((founder, index) => (
           <AnimatedSection
             key={founder.name}
@@ -46,7 +46,7 @@ export function Team() {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="relative min-h-[160px] flex-1 overflow-hidden rounded-[22px] shadow-md"
+              className="relative aspect-[9/10] w-full overflow-hidden rounded-[22px] shadow-md"
             >
               <Image
                 src={founder.photo}
@@ -57,7 +57,7 @@ export function Team() {
               />
             </motion.div>
 
-            <div className="relative z-10 mx-4 -mt-8 flex flex-col gap-2.5 rounded-2xl border border-border bg-card p-5 shadow-lg">
+            <div className="relative z-10 -mt-8 flex flex-col gap-2.5 rounded-2xl border border-border bg-card p-5 shadow-lg">
               <div>
                 <p className="text-xl font-semibold text-foreground">{founder.name}</p>
                 <p className="text-sm text-muted-foreground">{founder.role}</p>

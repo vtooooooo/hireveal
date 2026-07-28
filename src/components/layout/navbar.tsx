@@ -43,7 +43,7 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           {primaryNav.map((item) => {
             const active = pathname === item.href;
             return (
@@ -61,13 +61,10 @@ export function Navbar() {
               </Link>
             );
           })}
-        </nav>
-
-        <div className="hidden items-center gap-2 md:flex">
           <Button asChild size="lg" className="h-9 px-4">
             <Link href={siteConfig.extensionUrl}>Add to Chrome</Link>
           </Button>
-        </div>
+        </nav>
 
         <div className="flex items-center gap-1 md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>

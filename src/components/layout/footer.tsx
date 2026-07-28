@@ -35,16 +35,10 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 border-t border-border pt-8">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <Link
-            href="/contact"
-            className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Contact us
-          </Link>
         </div>
       </div>
     </footer>

@@ -2,7 +2,9 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { Resend } from "resend";
 import { contactSchema, type ContactInput } from "@/lib/schemas/contact";
+import { siteConfig } from "@/lib/constants/site";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -33,7 +35,11 @@ export async function submitContactForm(
     };
   }
 
-  await saveContactMessage(parsed.data);
+  const emailed = await sendContactEmail(parsed.data);
+  if (!emailed) {
+    // Never lose a submission if email isn't configured (yet) or the send fails.
+    await saveContactMessage(parsed.data);
+  }
 
   return {
     status: "success",
@@ -41,8 +47,53 @@ export async function submitContactForm(
   };
 }
 
-// Local stub: appends to a gitignored JSON file. Swap this for a real
-// provider (email, CRM, ticketing) once one is wired up.
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+async function sendContactEmail(entry: ContactInput): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn(
+      "RESEND_API_KEY is not set — contact form message saved locally instead of emailed."
+    );
+    return false;
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from: "Hireveal Contact Form <onboarding@resend.dev>",
+      to: siteConfig.supportEmail,
+      replyTo: entry.email,
+      subject: `New contact form message from ${entry.name}`,
+      html: `
+        <p><strong>Name:</strong> ${escapeHtml(entry.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(entry.email)}</p>
+        <p><strong>Message:</strong></p>
+        <p>${escapeHtml(entry.message).replace(/\n/g, "<br />")}</p>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend failed to send the contact form email:", error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Unexpected error sending the contact form email:", error);
+    return false;
+  }
+}
+
+// Fallback log used only when email sending isn't available — appends to a
+// gitignored JSON file so no submission is silently lost.
 async function saveContactMessage(entry: ContactInput) {
   const dir = path.join(process.cwd(), ".data");
   const filePath = path.join(dir, "contact-messages.json");
