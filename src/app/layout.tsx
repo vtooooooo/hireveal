@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/lib/constants/site";
@@ -60,10 +61,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
+        <SmoothScroll />
         <TooltipProvider delayDuration={150}>
           <Navbar />
           <main className="flex-1">{children}</main>

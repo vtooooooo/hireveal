@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import * as React from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { UserCheck, ScanSearch, Lock, BookOpenCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
@@ -32,19 +33,21 @@ const markers = [
 
 export function TrustMarkers() {
   const shouldReduceMotion = useReducedMotion();
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start center"],
+  });
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section className="border-y border-border bg-muted/40">
       <div className="w-full px-4 py-24 sm:px-6 lg:px-12">
-        <div className="relative">
+        <div ref={ref} className="relative">
           <motion.div
             aria-hidden
-            className="absolute top-10 right-[12.5%] left-[12.5%] hidden h-[2px] bg-success-500/40 sm:block"
-            style={{ transformOrigin: "left" }}
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: shouldReduceMotion ? 0.01 : 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="absolute top-10 right-[12.5%] left-[12.5%] hidden h-[2px] origin-left bg-success-500/40 sm:block"
+            style={shouldReduceMotion ? { scaleX: 1 } : { scaleX: lineScale }}
           />
 
           <div className="relative grid grid-cols-2 gap-x-8 gap-y-16 sm:grid-cols-4">

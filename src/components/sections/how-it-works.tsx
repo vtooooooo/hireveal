@@ -1,5 +1,10 @@
+"use client";
+
+import * as React from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Download, MousePointerClick, Sparkles } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { SectionTransition } from "@/components/shared/section-transition";
 
 const steps = [
   {
@@ -20,8 +25,18 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const shouldReduceMotion = useReducedMotion();
+  const gridRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: gridRef,
+    offset: ["start end", "start center"],
+  });
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section className="flex flex-1 flex-col justify-center bg-muted/40 py-16 lg:py-10">
+    <section className="relative flex flex-1 flex-col justify-center bg-muted/40 py-16 lg:py-10">
+      <SectionTransition fromClassName="from-brand-900" />
+
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="flex flex-col items-center gap-5 text-center">
           <span className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground uppercase">
@@ -32,10 +47,11 @@ export function HowItWorks() {
           </h2>
         </AnimatedSection>
 
-        <div className="relative mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:mt-20 lg:gap-16">
-          <div
+        <div ref={gridRef} className="relative mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:mt-20 lg:gap-16">
+          <motion.div
             aria-hidden
-            className="absolute top-8 right-[16.67%] left-[16.67%] hidden h-px bg-border sm:block"
+            style={shouldReduceMotion ? { scaleX: 1 } : { scaleX: lineScale }}
+            className="absolute top-8 right-[16.67%] left-[16.67%] hidden h-px origin-left bg-border sm:block"
           />
           {steps.map((step, index) => {
             const Icon = step.icon;

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { ScrollCue } from "@/components/shared/scroll-cue";
+import { SectionTransition } from "@/components/shared/section-transition";
 
 const problems = [
   {
@@ -29,20 +30,57 @@ const problems = [
   },
 ];
 
+function ProblemItem({
+  title,
+  description,
+  index,
+}: {
+  title: string;
+  description: string;
+  index: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["center end", "center start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.45, 1, 0.45]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [12, 0, -12]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={shouldReduceMotion ? undefined : { opacity, y }}
+      className="flex flex-col gap-3 border-t border-[#111827]/10 pt-6"
+    >
+      <span className="text-3xl font-semibold text-[#12B76A]">0{index + 1}</span>
+      <h3 className="text-xl font-semibold text-[#111827]">{title}</h3>
+      <p className="text-pretty text-base leading-relaxed text-[#111827]/60">
+        {description}
+      </p>
+    </motion.div>
+  );
+}
+
 export function Problem() {
   const shouldReduceMotion = useReducedMotion();
   const imageRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+
+  const { scrollYProgress: imageProgress } = useScroll({
     target: imageRef,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? [0, 0] : [-40, 40]);
+  const y = useTransform(imageProgress, [0, 1], shouldReduceMotion ? [0, 0] : [-40, 40]);
+  const imageScale = useTransform(imageProgress, [0, 1], shouldReduceMotion ? [1, 1] : [1, 1.06]);
 
   return (
     <section
       id="problem"
       className="relative scroll-mt-16 overflow-hidden bg-gradient-to-br from-[#F7F1E7] via-[#F3ECDF] to-[#E9DCC8]"
     >
+      <SectionTransition fromClassName="from-brand-50" />
+
       <div className="grid grid-cols-1 lg:grid-cols-[45%_55%]">
         {/* Left — text */}
         <div className="flex items-center px-6 py-24 sm:px-10 lg:px-16 lg:py-40">
@@ -57,25 +95,18 @@ export function Problem() {
                 Few deserve it.
               </h2>
               <p className="mt-6 max-w-[46ch] text-pretty leading-relaxed text-[#111827]/60">
-                
+
               </p>
             </AnimatedSection>
 
             <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2">
               {problems.map((problem, index) => (
-                <AnimatedSection
+                <ProblemItem
                   key={problem.title}
-                  delay={0.15 + index * 0.12}
-                  className="flex flex-col gap-3 border-t border-[#111827]/10 pt-6"
-                >
-                  <span className="text-3xl font-semibold text-[#12B76A]">
-                    0{index + 1}
-                  </span>
-                  <h3 className="text-xl font-semibold text-[#111827]">{problem.title}</h3>
-                  <p className="text-pretty text-base leading-relaxed text-[#111827]/60">
-                    {problem.description}
-                  </p>
-                </AnimatedSection>
+                  index={index}
+                  title={problem.title}
+                  description={problem.description}
+                />
               ))}
             </div>
           </div>
@@ -83,7 +114,7 @@ export function Problem() {
 
         {/* Right — hero image */}
         <div ref={imageRef} className="relative min-h-[360px] overflow-hidden lg:min-h-full">
-          <motion.div style={{ y }} className="absolute inset-0 -m-10">
+          <motion.div style={{ y, scale: imageScale }} className="absolute inset-0 -m-10">
             <Image
               src="/problem/frustrated_user.png"
               alt="A job seeker overwhelmed by browser tabs full of job listings"

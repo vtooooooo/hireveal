@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { AnimatedSection } from "@/components/shared/animated-section";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { LinkedinIcon } from "@/components/shared/linkedin-icon";
 import { Button } from "@/components/ui/button";
@@ -27,6 +26,8 @@ const founders = [
 ];
 
 export function Team() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="relative flex flex-col overflow-hidden px-4 py-16 sm:px-6 lg:min-h-[calc(100vh-4rem)] lg:px-8 lg:py-8">
       <SectionHeading
@@ -36,45 +37,62 @@ export function Team() {
       />
 
       <div className="mx-auto mt-10 grid w-full max-w-3xl flex-1 content-center grid-cols-1 gap-10 lg:mt-6 lg:min-h-0 lg:grid-cols-2 lg:gap-10">
-        {founders.map((founder, index) => (
-          <AnimatedSection
-            key={founder.name}
-            direction={index === 0 ? "right" : "left"}
-            delay={0.15 + index * 0.1}
-            className="flex flex-col"
-          >
+        {founders.map((founder) => (
+          <div key={founder.name} className="flex flex-col">
             <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+              initial={shouldReduceMotion ? undefined : { clipPath: "inset(100% 0 0 0)" }}
+              whileInView={shouldReduceMotion ? undefined : { clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="relative aspect-[9/10] w-full overflow-hidden rounded-[22px] shadow-md"
             >
-              <Image
-                src={founder.photo}
-                alt={founder.name}
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-              />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={founder.photo}
+                  alt={founder.name}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-cover"
+                />
+              </motion.div>
             </motion.div>
 
-            <div className="relative z-10 -mt-8 flex flex-col gap-2.5 rounded-2xl border border-border bg-card p-5 shadow-lg">
+            <motion.div
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
+              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="relative z-10 -mt-8 flex flex-col gap-2.5 rounded-2xl border border-border bg-card p-5 shadow-lg"
+            >
               <div>
                 <p className="text-xl font-semibold text-foreground">{founder.name}</p>
                 <p className="text-sm text-muted-foreground">{founder.role}</p>
               </div>
 
-              <Button asChild variant="outline" size="sm" className="w-fit">
-                <a href={founder.linkedin} target="_blank" rel="noopener noreferrer">
-                  <LinkedinIcon className="size-4" />
-                  LinkedIn
-                </a>
-              </Button>
+              <motion.div
+                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: 0.65, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className="w-fit"
+              >
+                <Button asChild variant="outline" size="sm">
+                  <a href={founder.linkedin} target="_blank" rel="noopener noreferrer">
+                    <LinkedinIcon className="size-4" />
+                    LinkedIn
+                  </a>
+                </Button>
+              </motion.div>
 
               <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
                 {founder.description}
               </p>
-            </div>
-          </AnimatedSection>
+            </motion.div>
+          </div>
         ))}
       </div>
     </section>
