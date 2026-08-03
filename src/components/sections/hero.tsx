@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowRight, Puzzle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/constants/site";
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -82,8 +83,8 @@ export function Hero() {
             }}
             className="flex flex-col gap-3 sm:flex-row"
           >
-            <Button size="lg" className="h-12 px-6 text-base">
-              Add to Chrome — it&apos;s free
+            <Button asChild size="lg" className="h-12 px-6 text-base">
+              <Link href={siteConfig.extensionUrl}>Add to Chrome — it&apos;s free</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-12 px-6 text-base">
               <Link href="/extension#interactive-demo">
